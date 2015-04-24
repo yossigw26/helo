@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taki xsi:noNamespaceSchemaLocation="taki.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   name="game1" currentPlayer="John">
+    <players>
+	<player name="John" type="COMPUTER">
+            <cards>
+                <card type="number" color="blue" number="2"/>
+                <card type="changeColor"/>
+            </cards>
+        </player>
+	<player name="Ringo" type="HUMAN">
+        <cards>
+            <card type="taki" color="red"/>
+        </cards>
+        </player>
+    </players>
+    <stack>
+        <card type="number" color="blue" number="4"/>
+        <card type="number" color="red" number="4"/>
+    </stack>
+    <pile>
+        <card type="stop" color="red"/>
+        <card type="changeColor"/>
+        <card type="number" color="yellow" number="9"/>
+    </pile>
+</taki>

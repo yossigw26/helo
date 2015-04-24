@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="file:/C:/Users/bars/Desktop/takiproj%20-%20update%204/taki.xml" uri="xml-resources/jaxb/Taki/taki.xml"/>
+    <system systemId="file:/C:/Users/bars/Desktop/takiproj%20-%20update%204/taki.xsd" uri="xml-resources/jaxb/Taki/taki.xsd"/>
+</catalog>

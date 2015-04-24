@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="taki">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="players">
+                    <xs:complexType>
+                        <xs:sequence minOccurs="2" maxOccurs="4">
+                            <xs:element name="player" type="player">
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="stack" type="cards"/>
+                <xs:element name="pile" type="cards"/>
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string" use="required"/>
+            <xs:attribute name="currentPlayer" type="xs:string"/>
+            <xs:attribute name="direction" type="direction" default="clockwise"/>
+            <xs:attribute name="color" type="cardColor"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="player">
+        <xs:sequence minOccurs="1" maxOccurs="1">
+            <xs:element name="cards" type="cards"/>
+        </xs:sequence>
+        <xs:attribute name="type" type="playerType"/>
+        <xs:attribute name="name" type="xs:string"/>
+    </xs:complexType>
+    
+    <xs:complexType name="cards">
+        <xs:sequence>
+            <xs:element name="card" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:attributeGroup ref="card"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:attributeGroup name="card">
+        <xs:attribute name="type" type="cardType" use="required"/>
+        <xs:attribute name="color" type="cardColor"/>
+        <xs:attribute name="number" type="cardNumber"/>
+    </xs:attributeGroup>
+    
+    <xs:simpleType name="cardNumber">
+        <xs:restriction base="xs:positiveInteger" >
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="9"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="cardType">
+        <xs:restriction base="xs:string"> 
+            <xs:enumeration value="number"/>
+            <xs:enumeration value="plus"/>
+            <xs:enumeration value="stop"/>
+            <xs:enumeration value="changeDirection"/>
+            <xs:enumeration value="changeColor"/>
+            <xs:enumeration value="taki"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="cardColor">
+        <xs:restriction base="xs:string"> 
+            <xs:enumeration value="blue"/>
+            <xs:enumeration value="red"/>
+            <xs:enumeration value="yellow"/>
+            <xs:enumeration value="green"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="playerType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="HUMAN"/>
+            <xs:enumeration value="COMPUTER"/>
+        </xs:restriction>
+    </xs:simpleType>    
+    
+    <xs:simpleType name="direction">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="clockwise"/>
+            <xs:enumeration value="counterClockwise"/>
+        </xs:restriction>
+    </xs:simpleType>    
+</xs:schema>
